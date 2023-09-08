@@ -1,0 +1,2 @@
+# ProductPro
+Magazine handler

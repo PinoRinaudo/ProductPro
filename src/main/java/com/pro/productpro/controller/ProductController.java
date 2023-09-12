@@ -1,4 +1,4 @@
-package com.pro.productpro.controllers;
+package com.pro.productpro.controller;
 
 import org.springframework.web.bind.annotation.*;
 

@@ -11,4 +11,9 @@ public class ProductController {
         return "Tanti prodotti!";
     }
 
+    @GetMapping("/products/{id}")
+    public int getProduct(@PathVariable int id) {
+        return id;
+    }
+
 }

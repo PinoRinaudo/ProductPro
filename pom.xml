@@ -66,15 +66,23 @@
                         <image>
                             <alias>mysql-products</alias>
                             <name>mysql/mysql-server</name>
-                            <ports>
-                                <port>3306:3306</port>
-                            </ports>
-                            <volumes>
-                                <volume>
-                                    <name>scratch</name>
-                                    <type>emptyDir</type>
-                                </volume>
-                            </volumes>
+                            <run>
+                                <env>
+                                    <MYSQL_DATABASE>mydatabase</MYSQL_DATABASE>
+                                    <MYSQL_USER>user</MYSQL_USER>
+                                    <MYSQL_PASSWORD>password</MYSQL_PASSWORD>
+                                </env>
+                                <volumes>
+                                    <bind>
+                                        <volume>
+                                            resources/application.properties
+                                        </volume>
+                                    </bind>
+                                </volumes>
+                                <ports>
+                                    <port>3306:3306</port>
+                                </ports>
+                            </run>
                         </image>
                     </images>
                 </configuration>
@@ -87,13 +95,13 @@
                             <goal>start</goal>
                         </goals>
                     </execution>
-                    <execution>
+                    <!--<execution>
                         <id>stop</id>
                         <phase>post-integration-test</phase>
                         <goals>
                             <goal>stop</goal>
                         </goals>
-                    </execution>
+                    </execution>-->
                 </executions>
             </plugin>
         </plugins>

@@ -42,6 +42,13 @@
         </dependency>
 
         <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
@@ -109,6 +116,7 @@
                             <goal>start</goal>
                         </goals>
                     </execution>
+                    <!--
                     <execution>
                         <id>stop</id>
                         <phase>post-integration-test</phase>
@@ -116,6 +124,7 @@
                             <goal>stop</goal>
                         </goals>
                     </execution>
+                    -->
                 </executions>
             </plugin>
         </plugins>

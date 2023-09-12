@@ -61,21 +61,30 @@
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.43.4</version>
+                <configuration>
+                    <images>
+                        <image>
+                            <alias>mysql-products</alias>
+                            <name>mysql/mysql-server</name>
+                        </image>
+                    </images>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>build-docker-image</id>
-                        <phase>package</phase>
+                        <id>start</id>
+                        <phase>pre-integration-test</phase>
                         <goals>
                             <goal>build</goal>
+                            <goal>start</goal>
                         </goals>
-                        <configuration>
-                            <images>
-                                <image>
-                                    <name>mysql/mysql-server</name>
-                                    <!-- Altri parametri come tags e dockerFile -->
-                                </image>
-                            </images>
-                        </configuration>
+
+                    </execution>
+                    <execution>
+                        <id>stop</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

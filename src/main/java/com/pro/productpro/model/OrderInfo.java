@@ -5,23 +5,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public class Customer {
+public class OrderInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private String name;
+    private Date date;
 
-//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-//    private List<Order> orders;
+//    @ManyToOne
+//    @JoinColumn(name = "customer_id", nullable = false)
+//    private Customer customer;
 
-    public Customer(String name) {
-        this.name = name;
+    public OrderInfo(Date date) {
+        this.date = date;
     }
 
 

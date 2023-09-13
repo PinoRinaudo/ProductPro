@@ -20,9 +20,9 @@ public class OrderInfo {
     @Column(nullable = false)
     private Date date;
 
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id", nullable = false)
-//    private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
     public OrderInfo(Date date) {
         this.date = date;

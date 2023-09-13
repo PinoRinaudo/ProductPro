@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @Getter
@@ -17,8 +19,8 @@ public class Customer {
     @Column(nullable = false)
     private String name;
 
-//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-//    private List<Order> orders;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<OrderInfo> orders;
 
     public Customer(String name) {
         this.name = name;

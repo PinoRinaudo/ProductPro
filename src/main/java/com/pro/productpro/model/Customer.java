@@ -17,7 +17,6 @@ public class Customer {
     @Column(nullable = false)
     private String name;
 
-
     public Customer(String name) {
         this.name = name;
     }

@@ -1,7 +1,7 @@
 package com.pro.productpro.repository;
 
-import com.pro.productpro.model.Product;
+import com.pro.productpro.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CustomerRepository extends JpaRepository<Product, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 }

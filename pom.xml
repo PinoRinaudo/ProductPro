@@ -92,14 +92,14 @@
                 <configuration>
                     <images>
                         <image>
-                            <alias>mysql-products</alias>
+                            <alias>db-products</alias>
                             <name>mysql/mysql-server</name>
                             <run>
                                 <env>
                                     <MYSQL_DATABASE>mydatabase</MYSQL_DATABASE>
                                     <MYSQL_USER>user</MYSQL_USER>
                                     <MYSQL_PASSWORD>password</MYSQL_PASSWORD>
-                                    <MYSQL_SSL>=true</MYSQL_SSL>
+                                    <MYSQL_SSL>true</MYSQL_SSL>
                                 </env>
                                 <volumes>
                                     <bind>
@@ -116,24 +116,26 @@
                     </images>
                 </configuration>
                 <executions>
+
                     <execution>
-                        <id>start</id>
+                        <id>start-container-db</id>
                         <phase>pre-integration-test</phase>
                         <goals>
                             <goal>build</goal>
                             <goal>start</goal>
                         </goals>
                     </execution>
-                    <!-- <execution>
-                         <id>stop</id>
-                         <phase>post-integration-test</phase>
-                         <goals>
-                             <goal>stop</goal>
-                         </goals>
-                     </execution>-->
+
+                    <execution>
+                        <id>stop-container-db</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+
                 </executions>
             </plugin>
-
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>

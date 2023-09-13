@@ -43,10 +43,11 @@
         </dependency>
 
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -98,6 +99,7 @@
                                     <MYSQL_DATABASE>mydatabase</MYSQL_DATABASE>
                                     <MYSQL_USER>user</MYSQL_USER>
                                     <MYSQL_PASSWORD>password</MYSQL_PASSWORD>
+                                    <MYSQL_SSL>=true</MYSQL_SSL>
                                 </env>
                                 <volumes>
                                     <bind>
@@ -122,13 +124,13 @@
                             <goal>start</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>stop</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>stop</goal>
-                        </goals>
-                    </execution>
+                    <!-- <execution>
+                         <id>stop</id>
+                         <phase>post-integration-test</phase>
+                         <goals>
+                             <goal>stop</goal>
+                         </goals>
+                     </execution>-->
                 </executions>
             </plugin>
 

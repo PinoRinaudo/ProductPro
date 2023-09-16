@@ -1,5 +1,6 @@
 package com.pro.productpro.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class Customer implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<OrderInfo> orders;
 
 

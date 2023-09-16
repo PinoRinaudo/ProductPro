@@ -1,5 +1,6 @@
 package com.pro.productpro.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,5 +24,6 @@ public class Product implements Serializable {
     private double price;
 
     @OneToMany(mappedBy = "product")
+    @JsonIgnore
     private List<OrderProduct> orderProducts;
 }

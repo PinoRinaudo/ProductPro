@@ -126,9 +126,9 @@
                                 </env>
                                 <volumes>
                                     <bind>
-                                        <volume>
-                                            resources/application.properties
-                                        </volume>
+                                        <from>src/main/resources/application.properties</from>
+                                        <to>/path/on/container/application.properties</to>
+                                        <mode>ro</mode>
                                     </bind>
                                 </volumes>
                                 <ports>

@@ -27,7 +27,6 @@ public class ProductOrder implements Serializable {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column(name = "quantity")
     private int quantity;
 
 

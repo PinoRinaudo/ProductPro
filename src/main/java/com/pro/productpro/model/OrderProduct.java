@@ -1,33 +1,33 @@
 package com.pro.productpro.model;
 
-import com.pro.productpro.compositekeys.ProductOrderId;
+import com.pro.productpro.compositekeys.OrderProductId;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
 
-@Entity
+
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Getter
 @Setter
-public class ProductOrder implements Serializable {
-    @EmbeddedId
-    private ProductOrderId id;
+@Entity
+public class OrderProduct implements Serializable {
 
-    @ManyToOne
-    @MapsId("orderId")
-    @JoinColumn(name = "order_id")
-    private OrderInfo order;
+    @EmbeddedId
+    private OrderProductId id;
 
     @ManyToOne
     @MapsId("productId")
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @ManyToOne
+    @MapsId("orderId")
+    @JoinColumn(name = "order_id")
+    private OrderInfo order;
+
     private int quantity;
-
-
 }

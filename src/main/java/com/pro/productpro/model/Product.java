@@ -1,17 +1,17 @@
 package com.pro.productpro.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
-@Getter
-@Setter
 public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +19,9 @@ public class Product implements Serializable {
 
     @Column(nullable = false)
     private String name;
+
     private double price;
 
+    @OneToMany(mappedBy = "product")
+    private List<OrderProduct> orderProducts;
 }

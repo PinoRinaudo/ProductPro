@@ -26,9 +26,5 @@ public class OrderInfo implements Serializable {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    public OrderInfo(Date date) {
-        this.date = date;
-    }
-
 
 }

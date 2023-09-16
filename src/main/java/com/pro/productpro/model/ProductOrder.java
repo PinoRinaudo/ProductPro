@@ -2,14 +2,15 @@ package com.pro.productpro.model;
 
 import com.pro.productpro.compositekeys.OrderProductId;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 @Getter
 @Setter
 public class ProductOrder implements Serializable {

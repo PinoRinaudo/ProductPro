@@ -1,15 +1,16 @@
 package com.pro.productpro.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 @Getter
 @Setter
 public class OrderInfo implements Serializable {

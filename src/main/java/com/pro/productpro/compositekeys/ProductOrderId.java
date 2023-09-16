@@ -12,7 +12,7 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode
 @Embeddable
-public class OrderProductId implements Serializable {
+public class ProductOrderId implements Serializable {
     private Long orderId;
     private Long productId;
 

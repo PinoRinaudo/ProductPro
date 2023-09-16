@@ -1,6 +1,6 @@
 package com.pro.productpro.model;
 
-import com.pro.productpro.compositekeys.OrderProductId;
+import com.pro.productpro.compositekeys.ProductOrderId;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Setter
 public class ProductOrder implements Serializable {
     @EmbeddedId
-    private OrderProductId id;
+    private ProductOrderId id;
 
     @ManyToOne
     @MapsId("orderId")

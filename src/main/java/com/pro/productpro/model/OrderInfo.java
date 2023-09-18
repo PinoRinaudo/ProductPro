@@ -29,7 +29,7 @@ public class OrderInfo implements Serializable {
 
     @OneToMany(mappedBy = "order")
 //    @JsonIgnore
-    private List<OrderProduct> orderProducts;
+    private List<OrderProduct> products;
 
 
 }

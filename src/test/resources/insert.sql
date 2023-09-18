@@ -10,6 +10,13 @@ INSERT INTO product (price, name) VALUES (39.99, 'Prodotto D');
 INSERT INTO customer (name) VALUES ('Customer 1');
 INSERT INTO customer (name) VALUES ('Customer 2');
 
+
+-- Inserto into phone
+INSERT INTO phone (customer_id, number) VALUES (1, '348735492');
+INSERT INTO phone (customer_id, number) VALUES (1, '34335492');
+INSERT INTO phone (customer_id, number) VALUES (2, '348535492');
+INSERT INTO phone (customer_id, number) VALUES (2, '228735492');
+
 -- Inserto into order
 INSERT INTO order_info (customer_id, date) VALUES (1, '2023-09-16 12:00:00');
 INSERT INTO order_info (customer_id, date) VALUES (1, '2023-09-17 16:00:00');

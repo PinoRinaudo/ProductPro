@@ -17,10 +17,10 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @Getter
 @Setter
-public class Phone implements Serializable {
+public class Email implements Serializable {
     @Id
-    @Pattern(regexp = "^[0-9]*$", message = "Invalid number format")
-    private String number;
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message = "Invalid email format")
+    private String email;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)

@@ -29,5 +29,8 @@ public class Customer implements Serializable {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Phone> phones;
 
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Email> emails;
+
 
 }

@@ -28,6 +28,6 @@ INSERT INTO order_info (customer_id, date) VALUES (1, '2023-09-17 16:00:00');
 INSERT INTO order_info (customer_id, date) VALUES (2, '2023-09-20 10:00:00');
 
 -- Inserto into order_product
-INSERT INTO order_product (order_id, product_id, quantity) VALUES (1, 1, 1);
+INSERT INTO order_product (order_id, product_id, quantity) VALUES (1, 1, 3);
 INSERT INTO order_product (order_id, product_id, quantity) VALUES (1, 2, 1);
 INSERT INTO order_product (order_id, product_id, quantity) VALUES (2, 2, 1);

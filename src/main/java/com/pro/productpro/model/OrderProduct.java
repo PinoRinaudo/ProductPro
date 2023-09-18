@@ -1,5 +1,6 @@
 package com.pro.productpro.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pro.productpro.compositekeys.OrderProductId;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,6 +18,7 @@ import java.io.Serializable;
 public class OrderProduct implements Serializable {
 
     @EmbeddedId
+    @JsonIgnore
     private OrderProductId id;
 
     @ManyToOne
@@ -27,6 +29,7 @@ public class OrderProduct implements Serializable {
     @ManyToOne
     @MapsId("orderId")
     @JoinColumn(name = "order_id")
+    @JsonIgnore
     private OrderInfo order;
 
     private int quantity;

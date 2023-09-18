@@ -26,4 +26,9 @@ public class OrderInfoController {
         return id;
     }
 
+    @GetMapping("/orders/customer/{id}")
+    public int getCustomerOrders(@PathVariable int id) {
+        return id;
+    }
+
 }

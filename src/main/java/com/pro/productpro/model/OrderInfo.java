@@ -1,5 +1,6 @@
 package com.pro.productpro.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +29,7 @@ public class OrderInfo implements Serializable {
     private Customer customer;
 
     @OneToMany(mappedBy = "order")
+    @JsonIgnore
     private List<OrderProduct> orderProducts;
 
 

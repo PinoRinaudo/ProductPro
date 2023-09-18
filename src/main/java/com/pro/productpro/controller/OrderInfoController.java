@@ -1,7 +1,7 @@
 package com.pro.productpro.controller;
 
-import com.pro.productpro.model.OrderProduct;
-import com.pro.productpro.repository.OrderProductRepository;
+import com.pro.productpro.model.OrderInfo;
+import com.pro.productpro.repository.OrderInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,12 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class OrderProductController {
+public class OrderInfoController {
     @Autowired
-    OrderProductRepository repository;
+    OrderInfoRepository repository;
 
     @GetMapping("/orders")
-    public List<OrderProduct> getProducts() {
+    public List<OrderInfo> getProducts() {
         return repository.findAll();
     }
 

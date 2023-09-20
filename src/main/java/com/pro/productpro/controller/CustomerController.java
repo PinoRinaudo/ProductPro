@@ -1,8 +1,7 @@
 package com.pro.productpro.controller;
 
 import com.pro.productpro.model.Customer;
-import com.pro.productpro.model.Phone;
-import com.pro.productpro.repository.CustomerRepository;
+import com.pro.productpro.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +13,11 @@ import java.util.List;
 @Slf4j
 public class CustomerController {
     @Autowired
-    CustomerRepository repository;
+    CustomerService service;
 
     @GetMapping
     public List<Customer> getCustomers() {
-        return repository.findAll();
+        return service.findAll();
     }
 
     @GetMapping("/{id}")
@@ -28,11 +27,7 @@ public class CustomerController {
 
     @PostMapping
     public Customer addCustomer(@RequestBody Customer customer) {
-        for (Phone phone : customer.getPhones()) {
-            log.info("Customer's phone " + phone);
-            phone.setCustomer(customer);
-        }
-        return repository.save(customer);
+        return service.addCustomer(customer);
     }
 
 }

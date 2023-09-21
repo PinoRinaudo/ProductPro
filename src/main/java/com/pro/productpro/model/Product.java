@@ -23,7 +23,8 @@ public class Product implements Serializable {
 
     private double price;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product",
+            orphanRemoval = true)
     @JsonIgnore
     private List<OrderProduct> orderProducts;
 }

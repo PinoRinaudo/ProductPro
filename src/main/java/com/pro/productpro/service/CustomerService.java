@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 @Service
 @Slf4j
@@ -31,33 +32,40 @@ public class CustomerService {
         return repository.save(customer);
     }
 
+    public <T> void updateList(List<T> oldList, List<T> newList) {
+        if (newList != null) {
+            oldList.clear();
+            oldList.addAll(newList);
+        }
+    }
+
+    public <T> void applyInList(List<T> list, Consumer<T> consumer) {
+        if (list != null)
+            list.forEach(consumer);
+
+    }
+
     public Customer updateCustomer(Long id, Customer newCustomer) {
         Optional<Customer> optionalCustomer = repository.findById(id);
         if (optionalCustomer.isPresent()) {
-
             Customer oldCustomer = optionalCustomer.get();
             oldCustomer.setName(newCustomer.getName());
-            if (newCustomer.getPhones() != null) {
-                oldCustomer.getPhones().clear();
-                oldCustomer.getPhones().addAll(newCustomer.getPhones());
-            }
-            if (newCustomer.getEmails() != null) {
-                oldCustomer.getEmails().clear();
-                oldCustomer.getEmails().addAll(newCustomer.getEmails());
-            }
-            if (newCustomer.getOrders() != null) {
-                oldCustomer.getOrders().clear();
-                oldCustomer.getOrders().addAll(newCustomer.getOrders());
-            }
+            updateList(oldCustomer.getPhones(), newCustomer.getPhones());
+            updateList(oldCustomer.getEmails(), newCustomer.getEmails());
+            updateList(oldCustomer.getOrders(), newCustomer.getOrders());
 
-            if (oldCustomer.getPhones() != null) for (Phone phone : oldCustomer.getPhones())
-                phone.setCustomer(oldCustomer);
+//            if (oldCustomer.getPhones() != null) for (Phone phone : oldCustomer.getPhones())
+//                phone.setCustomer(oldCustomer);
 
-            if (oldCustomer.getEmails() != null) for (Email email : oldCustomer.getEmails())
-                email.setCustomer(oldCustomer);
+            applyInList(oldCustomer.getPhones(), e -> e.setCustomer(oldCustomer));
+            applyInList(oldCustomer.getEmails(), e -> e.setCustomer(oldCustomer));
+            applyInList(oldCustomer.getOrders(), e -> e.setCustomer(oldCustomer));
 
-            if (oldCustomer.getOrders() != null) for (OrderInfo orderInfo : oldCustomer.getOrders())
-                orderInfo.setCustomer(oldCustomer);
+//            if (oldCustomer.getEmails() != null) for (Email email : oldCustomer.getEmails())
+//                email.setCustomer(oldCustomer);
+//
+//            if (oldCustomer.getOrders() != null) for (OrderInfo orderInfo : oldCustomer.getOrders())
+//                orderInfo.setCustomer(oldCustomer);
 
             repository.save(oldCustomer);
             return oldCustomer;

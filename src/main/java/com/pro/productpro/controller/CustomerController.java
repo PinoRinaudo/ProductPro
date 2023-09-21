@@ -1,6 +1,7 @@
 package com.pro.productpro.controller;
 
 import com.pro.productpro.model.Customer;
+import com.pro.productpro.model.Phone;
 import com.pro.productpro.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,23 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public int getCustomer(@PathVariable int id) {
+    public Long getCustomer(@PathVariable Long id) {
         return id;
     }
 
     @PostMapping
-    public Customer addCustomer(@RequestBody Customer customer) {
-        return service.addCustomer(customer);
+    public Customer createCustomer(@RequestBody Customer customer) {
+        return service.createCustomer(customer);
+    }
+
+    @PostMapping("/{id}/phones")
+    public Customer addPhone(@PathVariable Long id, @RequestBody List<Phone> phones) {
+        return service.addPhones(id, phones);
+    }
+
+    @GetMapping("/{id}/phones")
+    public List<Phone> getCustomerPhones(@PathVariable Long id) {
+        return service.getAllPhonesById(id);
     }
 
 }

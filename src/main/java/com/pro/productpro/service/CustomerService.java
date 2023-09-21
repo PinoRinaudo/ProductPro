@@ -54,18 +54,9 @@ public class CustomerService {
             updateList(oldCustomer.getEmails(), newCustomer.getEmails());
             updateList(oldCustomer.getOrders(), newCustomer.getOrders());
 
-//            if (oldCustomer.getPhones() != null) for (Phone phone : oldCustomer.getPhones())
-//                phone.setCustomer(oldCustomer);
-
             applyInList(oldCustomer.getPhones(), e -> e.setCustomer(oldCustomer));
             applyInList(oldCustomer.getEmails(), e -> e.setCustomer(oldCustomer));
             applyInList(oldCustomer.getOrders(), e -> e.setCustomer(oldCustomer));
-
-//            if (oldCustomer.getEmails() != null) for (Email email : oldCustomer.getEmails())
-//                email.setCustomer(oldCustomer);
-//
-//            if (oldCustomer.getOrders() != null) for (OrderInfo orderInfo : oldCustomer.getOrders())
-//                orderInfo.setCustomer(oldCustomer);
 
             repository.save(oldCustomer);
             return oldCustomer;

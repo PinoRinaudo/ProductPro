@@ -19,6 +19,10 @@ public class CustomerService {
     @Autowired
     CustomerRepository repository;
 
+    public List<Customer> findAll() {
+        return repository.findAll();
+    }
+
     public Customer createCustomer(Customer customer) {
         if (customer.getPhones() != null) for (Phone phone : customer.getPhones())
             phone.setCustomer(customer);
@@ -27,9 +31,41 @@ public class CustomerService {
         return repository.save(customer);
     }
 
-    public List<Customer> findAll() {
-        return repository.findAll();
+    public Customer updateCustomer(Long id, Customer newCustomer) {
+        Optional<Customer> optionalCustomer = repository.findById(id);
+        if (optionalCustomer.isPresent()) {
+
+            Customer oldCustomer = optionalCustomer.get();
+            oldCustomer.setName(newCustomer.getName());
+            if (newCustomer.getPhones() != null) {
+                oldCustomer.getPhones().clear();
+                oldCustomer.getPhones().addAll(newCustomer.getPhones());
+            }
+            if (newCustomer.getEmails() != null) {
+                oldCustomer.getEmails().clear();
+                oldCustomer.getEmails().addAll(newCustomer.getEmails());
+            }
+            if (newCustomer.getOrders() != null) {
+                oldCustomer.getOrders().clear();
+                oldCustomer.getOrders().addAll(newCustomer.getOrders());
+            }
+
+            if (oldCustomer.getPhones() != null) for (Phone phone : oldCustomer.getPhones())
+                phone.setCustomer(oldCustomer);
+
+            if (oldCustomer.getEmails() != null) for (Email email : oldCustomer.getEmails())
+                email.setCustomer(oldCustomer);
+
+            if (oldCustomer.getOrders() != null) for (OrderInfo orderInfo : oldCustomer.getOrders())
+                orderInfo.setCustomer(oldCustomer);
+
+            repository.save(oldCustomer);
+            return oldCustomer;
+        }
+        return null;
+
     }
+
 
     public Customer addPhones(Long id, List<Phone> phones) {
         Optional<Customer> optionalCustomer = repository.findById(id);
@@ -84,4 +120,6 @@ public class CustomerService {
         }
         return null;
     }
+
+
 }

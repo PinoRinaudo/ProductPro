@@ -23,14 +23,19 @@ public class CustomerController {
         return service.findAll();
     }
 
+    @PostMapping
+    public Customer createCustomer(@RequestBody Customer customer) {
+        return service.createCustomer(customer);
+    }
+
     @GetMapping("/{id}")
     public Long getCustomer(@PathVariable Long id) {
         return id;
     }
 
-    @PostMapping
-    public Customer createCustomer(@RequestBody Customer customer) {
-        return service.createCustomer(customer);
+    @PutMapping("/{id}")
+    public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
+        return service.updateCustomer(id, customer);
     }
 
     @PostMapping("/{id}/phones")

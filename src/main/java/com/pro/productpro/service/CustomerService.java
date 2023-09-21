@@ -47,4 +47,21 @@ public class CustomerService {
         Optional<Customer> optionalCustomer = repository.findById(id);
         return optionalCustomer.map(Customer::getPhones).orElse(null);
     }
+
+    public Customer addEmails(Long id, List<Email> emails) {
+        Optional<Customer> optionalCustomer = repository.findById(id);
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            customer.getEmails().addAll(emails);
+            emails.forEach(email -> email.setCustomer(customer));
+            repository.save(customer);
+            return customer;
+        }
+        return null;
+    }
+
+    public List<Email> getAllEmailsById(Long id) {
+        Optional<Customer> optionalCustomer = repository.findById(id);
+        return optionalCustomer.map(Customer::getEmails).orElse(null);
+    }
 }

@@ -1,6 +1,7 @@
 package com.pro.productpro.controller;
 
 import com.pro.productpro.model.Customer;
+import com.pro.productpro.model.Email;
 import com.pro.productpro.model.Phone;
 import com.pro.productpro.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +40,17 @@ public class CustomerController {
     @GetMapping("/{id}/phones")
     public List<Phone> getCustomerPhones(@PathVariable Long id) {
         return service.getAllPhonesById(id);
+    }
+
+
+    @PostMapping("/{id}/emails")
+    public Customer addEmail(@PathVariable Long id, @RequestBody List<Email> emails) {
+        return service.addEmails(id, emails);
+    }
+
+    @GetMapping("/{id}/emails")
+    public List<Email> getCustomerEmails(@PathVariable Long id) {
+        return service.getAllEmailsById(id);
     }
 
 }

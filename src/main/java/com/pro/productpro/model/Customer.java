@@ -26,10 +26,14 @@ public class Customer implements Serializable {
     @JsonIgnore
     private List<OrderInfo> orders;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Phone> phones;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Email> emails;
 
 

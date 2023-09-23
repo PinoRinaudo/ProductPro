@@ -111,6 +111,20 @@ public class CustomerService {
         return optionalCustomer.orElse(null);
     }
 
+
+    public Customer updatePhones(Long id, String currentPhone, Phone newPhone) {
+        Optional<Customer> optionalCustomer = repository.findById(id);
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            customer.getPhones().removeIf(e -> e.getNumber().equals(currentPhone));
+            newPhone.setCustomer(customer);
+            customer.getPhones().add(newPhone);
+            repository.save(customer);
+            return customer;
+        }
+        return null;
+    }
+
     public Customer deleteCustomer(Long id) {
         Optional<Customer> optionalCustomer = repository.findById(id);
         if (optionalCustomer.isPresent()) {
@@ -120,4 +134,5 @@ public class CustomerService {
         }
         return null;
     }
+
 }

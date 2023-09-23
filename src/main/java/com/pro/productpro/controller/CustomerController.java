@@ -43,10 +43,19 @@ public class CustomerController {
         return service.deleteCustomer(id);
     }
 
+    @GetMapping("/{id}/phones")
+    public List<Phone> getCustomerPhones(@PathVariable Long id) {
+        return service.getAllPhonesById(id);
+    }
 
     @PostMapping("/{id}/phones")
     public Customer addPhone(@PathVariable Long id, @RequestBody List<Phone> phones) {
         return service.addPhones(id, phones);
+    }
+
+    @PutMapping("/{id}/phones/{numberCurrPhone}")
+    public Customer updatePhone(@PathVariable Long id, @PathVariable String numberCurrPhone, @RequestBody Phone newPhone) {
+        return service.updatePhones(id, numberCurrPhone, newPhone);
     }
 
     @DeleteMapping("/{id}/phones/{number}")
@@ -54,10 +63,6 @@ public class CustomerController {
         return service.deletePhones(id, number);
     }
 
-    @GetMapping("/{id}/phones")
-    public List<Phone> getCustomerPhones(@PathVariable Long id) {
-        return service.getAllPhonesById(id);
-    }
 
     @PostMapping("/{id}/emails")
     public Customer addEmail(@PathVariable Long id, @RequestBody List<Email> emails) {

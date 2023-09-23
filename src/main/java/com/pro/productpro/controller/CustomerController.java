@@ -38,6 +38,12 @@ public class CustomerController {
         return service.updateCustomer(id, customer);
     }
 
+    @DeleteMapping("/{id}")
+    public Customer deleteCustomer(@PathVariable Long id) {
+        return service.deleteCustomer(id);
+    }
+
+
     @PostMapping("/{id}/phones")
     public Customer addPhone(@PathVariable Long id, @RequestBody List<Phone> phones) {
         return service.addPhones(id, phones);

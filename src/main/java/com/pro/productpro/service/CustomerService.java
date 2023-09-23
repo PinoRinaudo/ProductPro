@@ -110,4 +110,14 @@ public class CustomerService {
         Optional<Customer> optionalCustomer = repository.findById(id);
         return optionalCustomer.orElse(null);
     }
+
+    public Customer deleteCustomer(Long id) {
+        Optional<Customer> optionalCustomer = repository.findById(id);
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            repository.delete(customer);
+            return customer;
+        }
+        return null;
+    }
 }

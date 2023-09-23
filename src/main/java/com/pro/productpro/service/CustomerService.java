@@ -5,6 +5,7 @@ import com.pro.productpro.model.Email;
 import com.pro.productpro.model.OrderInfo;
 import com.pro.productpro.model.Phone;
 import com.pro.productpro.repository.CustomerRepository;
+import com.pro.productpro.utils.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 @Service
 @Slf4j
@@ -32,31 +32,19 @@ public class CustomerService {
         return repository.save(customer);
     }
 
-    public <T> void updateList(List<T> oldList, List<T> newList) {
-        if (newList != null) {
-            oldList.clear();
-            oldList.addAll(newList);
-        }
-    }
-
-    public <T> void applyInList(List<T> list, Consumer<T> consumer) {
-        if (list != null)
-            list.forEach(consumer);
-
-    }
 
     public Customer updateCustomer(Long id, Customer newCustomer) {
         Optional<Customer> optionalCustomer = repository.findById(id);
         if (optionalCustomer.isPresent()) {
             Customer oldCustomer = optionalCustomer.get();
             oldCustomer.setName(newCustomer.getName());
-            updateList(oldCustomer.getPhones(), newCustomer.getPhones());
-            updateList(oldCustomer.getEmails(), newCustomer.getEmails());
-            updateList(oldCustomer.getOrders(), newCustomer.getOrders());
+            Utils.replaceList(oldCustomer.getPhones(), newCustomer.getPhones());
+            Utils.replaceList(oldCustomer.getEmails(), newCustomer.getEmails());
+            Utils.replaceList(oldCustomer.getOrders(), newCustomer.getOrders());
 
-            applyInList(oldCustomer.getPhones(), e -> e.setCustomer(oldCustomer));
-            applyInList(oldCustomer.getEmails(), e -> e.setCustomer(oldCustomer));
-            applyInList(oldCustomer.getOrders(), e -> e.setCustomer(oldCustomer));
+            Utils.applyInList(oldCustomer.getPhones(), e -> e.setCustomer(oldCustomer));
+            Utils.applyInList(oldCustomer.getEmails(), e -> e.setCustomer(oldCustomer));
+            Utils.applyInList(oldCustomer.getOrders(), e -> e.setCustomer(oldCustomer));
 
             repository.save(oldCustomer);
             return oldCustomer;

@@ -62,8 +62,7 @@ public class CustomerController {
     public Customer deletePhone(@PathVariable Long id, @PathVariable String number) {
         return service.deletePhones(id, number);
     }
-
-
+    
     @PostMapping("/{id}/emails")
     public Customer addEmail(@PathVariable Long id, @RequestBody List<Email> emails) {
         return service.addEmails(id, emails);

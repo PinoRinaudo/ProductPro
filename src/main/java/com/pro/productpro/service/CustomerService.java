@@ -25,13 +25,10 @@ public class CustomerService {
     }
 
     public Customer createCustomer(Customer customer) {
-        if (customer.getPhones() != null) for (Phone phone : customer.getPhones())
-            phone.setCustomer(customer);
-        if (customer.getEmails() != null) for (Email email : customer.getEmails())
-            email.setCustomer(customer);
+        Utils.applyInList(customer.getPhones(), e -> e.setCustomer(customer));
+        Utils.applyInList(customer.getEmails(), e -> e.setCustomer(customer));
         return repository.save(customer);
     }
-
 
     public Customer updateCustomer(Long id, Customer newCustomer) {
         Optional<Customer> optionalCustomer = repository.findById(id);

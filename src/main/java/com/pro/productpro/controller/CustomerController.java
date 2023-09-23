@@ -29,8 +29,8 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Long getCustomer(@PathVariable Long id) {
-        return id;
+    public Customer getCustomer(@PathVariable Long id) {
+        return service.findById(id);
     }
 
     @PutMapping("/{id}")

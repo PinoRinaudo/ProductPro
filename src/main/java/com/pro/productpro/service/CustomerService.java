@@ -106,4 +106,8 @@ public class CustomerService {
     }
 
 
+    public Customer findById(Long id) {
+        Optional<Customer> optionalCustomer = repository.findById(id);
+        return optionalCustomer.orElse(null);
+    }
 }

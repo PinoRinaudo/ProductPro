@@ -20,7 +20,7 @@ public class CustomerController {
 
     @GetMapping
     public List<Customer> getCustomers() {
-        return service.findAll();
+        return service.getAllCustomers();
     }
 
     @PostMapping
@@ -30,7 +30,7 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public Customer getCustomer(@PathVariable Long id) {
-        return service.findById(id);
+        return service.getCustomerById(id);
     }
 
     @PutMapping("/{id}")
@@ -62,7 +62,7 @@ public class CustomerController {
     public Customer deletePhone(@PathVariable Long id, @PathVariable String number) {
         return service.deletePhones(id, number);
     }
-    
+
     @PostMapping("/{id}/emails")
     public Customer addEmail(@PathVariable Long id, @RequestBody List<Email> emails) {
         return service.addEmails(id, emails);

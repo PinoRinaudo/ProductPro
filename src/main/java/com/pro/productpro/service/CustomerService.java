@@ -20,8 +20,13 @@ public class CustomerService {
     @Autowired
     CustomerRepository repository;
 
-    public List<Customer> findAll() {
+    public List<Customer> getAllCustomers() {
         return repository.findAll();
+    }
+
+    public Customer getCustomerById(Long id) {
+        Optional<Customer> optionalCustomer = repository.findById(id);
+        return optionalCustomer.orElse(null);
     }
 
     public Customer createCustomer(Customer customer) {
@@ -50,6 +55,20 @@ public class CustomerService {
 
     }
 
+    public Customer deleteCustomer(Long id) {
+        Optional<Customer> optionalCustomer = repository.findById(id);
+        if (optionalCustomer.isPresent()) {
+            Customer customer = optionalCustomer.get();
+            repository.delete(customer);
+            return customer;
+        }
+        return null;
+    }
+
+    public List<Phone> getAllPhonesById(Long id) {
+        Optional<Customer> optionalCustomer = repository.findById(id);
+        return optionalCustomer.map(Customer::getPhones).orElse(null);
+    }
 
     public Customer addPhones(Long id, List<Phone> phones) {
         Optional<Customer> optionalCustomer = repository.findById(id);
@@ -63,33 +82,15 @@ public class CustomerService {
         return null;
     }
 
-    public List<Phone> getAllPhonesById(Long id) {
-        Optional<Customer> optionalCustomer = repository.findById(id);
-        return optionalCustomer.map(Customer::getPhones).orElse(null);
-    }
-
-    public Customer addEmails(Long id, List<Email> emails) {
+    public Customer updatePhones(Long id, String currentPhone, Phone newPhone) {
         Optional<Customer> optionalCustomer = repository.findById(id);
         if (optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
-            customer.getEmails().addAll(emails);
-            emails.forEach(email -> email.setCustomer(customer));
+            customer.getPhones().removeIf(e -> e.getNumber().equals(currentPhone));
+            newPhone.setCustomer(customer);
+            customer.getPhones().add(newPhone);
             repository.save(customer);
             return customer;
-        }
-        return null;
-    }
-
-    public List<Email> getAllEmailsById(Long id) {
-        Optional<Customer> optionalCustomer = repository.findById(id);
-        return optionalCustomer.map(Customer::getEmails).orElse(null);
-    }
-
-    public List<OrderInfo> getAllOrdersById(Long id) {
-        Optional<Customer> optionalCustomer = repository.findById(id);
-        if (optionalCustomer.isPresent()) {
-            Customer customer = optionalCustomer.get();
-            return customer.getOrders();
         }
         return null;
     }
@@ -105,34 +106,31 @@ public class CustomerService {
         return null;
     }
 
-
-    public Customer findById(Long id) {
+    public List<Email> getAllEmailsById(Long id) {
         Optional<Customer> optionalCustomer = repository.findById(id);
-        return optionalCustomer.orElse(null);
+        return optionalCustomer.map(Customer::getEmails).orElse(null);
     }
 
-
-    public Customer updatePhones(Long id, String currentPhone, Phone newPhone) {
+    public Customer addEmails(Long id, List<Email> emails) {
         Optional<Customer> optionalCustomer = repository.findById(id);
         if (optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
-            customer.getPhones().removeIf(e -> e.getNumber().equals(currentPhone));
-            newPhone.setCustomer(customer);
-            customer.getPhones().add(newPhone);
+            customer.getEmails().addAll(emails);
+            emails.forEach(email -> email.setCustomer(customer));
             repository.save(customer);
             return customer;
         }
         return null;
     }
 
-    public Customer deleteCustomer(Long id) {
+    public List<OrderInfo> getAllOrdersById(Long id) {
         Optional<Customer> optionalCustomer = repository.findById(id);
         if (optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
-            repository.delete(customer);
-            return customer;
+            return customer.getOrders();
         }
         return null;
     }
+
 
 }

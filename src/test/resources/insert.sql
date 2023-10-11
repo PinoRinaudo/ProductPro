@@ -16,7 +16,6 @@ INSERT INTO phone (customer_id, number) VALUES (1, '5551234567');
 INSERT INTO phone (customer_id, number) VALUES (1, '5559876543');
 INSERT INTO phone (customer_id, number) VALUES (2, '5555555555');
 INSERT INTO phone (customer_id, number) VALUES (2, '5552223333');
-INSERT INTO phone (customer_id, number) VALUES (3, '5558889999');
 INSERT INTO phone (customer_id, number) VALUES (3, '5557776666');
 
 -- Insert into email

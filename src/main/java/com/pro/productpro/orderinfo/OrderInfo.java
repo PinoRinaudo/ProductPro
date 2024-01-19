@@ -1,7 +1,7 @@
 package com.pro.productpro.orderinfo;
 
 import com.pro.productpro.customer.Customer;
-import com.pro.productpro.model.OrderProduct;
+import com.pro.productpro.orderproduct.OrderProduct;
 import jakarta.persistence.*;
 import lombok.*;
 

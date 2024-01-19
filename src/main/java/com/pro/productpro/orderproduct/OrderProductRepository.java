@@ -1,7 +1,7 @@
-package com.pro.productpro.repository;
+package com.pro.productpro.orderproduct;
 
 import com.pro.productpro.compositekeys.OrderProductId;
-import com.pro.productpro.model.OrderProduct;
+import com.pro.productpro.orderproduct.OrderProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderProductRepository extends JpaRepository<OrderProduct, OrderProductId> {

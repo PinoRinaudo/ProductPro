@@ -1,4 +1,4 @@
-package com.pro.productpro.model;
+package com.pro.productpro.orderproduct;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pro.productpro.compositekeys.OrderProductId;
@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-
 
 @NoArgsConstructor
 @AllArgsConstructor

@@ -2,6 +2,7 @@ package com.pro.productpro.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pro.productpro.compositekeys.OrderProductId;
+import com.pro.productpro.orderinfo.OrderInfo;
 import com.pro.productpro.product.Product;
 import jakarta.persistence.*;
 import lombok.*;

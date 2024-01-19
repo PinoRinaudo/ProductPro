@@ -1,10 +1,8 @@
-package com.pro.productpro.controller;
+package com.pro.productpro.customer;
 
-import com.pro.productpro.model.Customer;
-import com.pro.productpro.model.Email;
-import com.pro.productpro.model.OrderInfo;
-import com.pro.productpro.model.Phone;
-import com.pro.productpro.service.CustomerService;
+import com.pro.productpro.email.Email;
+import com.pro.productpro.orderinfo.OrderInfo;
+import com.pro.productpro.phone.Phone;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

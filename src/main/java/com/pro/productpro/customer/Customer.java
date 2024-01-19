@@ -1,6 +1,9 @@
-package com.pro.productpro.model;
+package com.pro.productpro.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pro.productpro.email.Email;
+import com.pro.productpro.orderinfo.OrderInfo;
+import com.pro.productpro.phone.Phone;
 import jakarta.persistence.*;
 import lombok.*;
 

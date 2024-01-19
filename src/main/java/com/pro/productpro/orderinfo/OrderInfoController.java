@@ -1,7 +1,5 @@
-package com.pro.productpro.controller;
+package com.pro.productpro.orderinfo;
 
-import com.pro.productpro.model.Email;
-import com.pro.productpro.repository.EmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,17 +10,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class EmailController {
+public class OrderInfoController {
     @Autowired
-    EmailRepository repository;
+    OrderInfoRepository repository;
 
-    @GetMapping("/emails")
-    public List<Email> getEmails() {
+    @GetMapping("/orders")
+    public List<OrderInfo> getProducts() {
         return repository.findAll();
     }
 
-    @GetMapping("/emails/{id}")
-    public int getEmail(@PathVariable int id) {
+    @GetMapping("/orders/{id}")
+    public int getProduct(@PathVariable int id) {
+        return id;
+    }
+
+    @GetMapping("/orders/customer/{id}")
+    public int getCustomerOrders(@PathVariable int id) {
         return id;
     }
 

@@ -1,6 +1,7 @@
-package com.pro.productpro.model;
+package com.pro.productpro.email;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pro.productpro.customer.Customer;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;

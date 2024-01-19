@@ -26,6 +26,7 @@ public class Product implements Serializable {
     private double width;
     private double height;
     private double depth;
+    private String link;
 
     @OneToMany(mappedBy = "product",
             orphanRemoval = true)

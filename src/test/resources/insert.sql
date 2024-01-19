@@ -1,10 +1,11 @@
 USE mydatabase;
 
--- Insert into product
-INSERT INTO product (price, name) VALUES (29.99, 'Smartphone');
-INSERT INTO product (price, name) VALUES (49.99, 'Tablet');
-INSERT INTO product (price, name) VALUES (14.99, 'Earphones');
-INSERT INTO product (price, name) VALUES (99.99, 'Laptop');
+-- Inserisci in product
+INSERT INTO product (price, name, width, height, depth) VALUES (399.99, 'Smartphone X', 2.8, 5.9, 0.3);
+INSERT INTO product (price, name, width, height, depth) VALUES (799.99, 'Tablet Pro', 9.7, 12.4, 0.4);
+INSERT INTO product (price, name, width, height, depth) VALUES (89.99, 'Wireless Earbuds', 1.2, 2.0, 1.5);
+INSERT INTO product (price, name, width, height, depth) VALUES (1299.99, 'High-Performance Laptop', 13.3, 15.6, 0.8);
+
 
 -- Insert into customer
 INSERT INTO customer (name) VALUES ('John Doe');

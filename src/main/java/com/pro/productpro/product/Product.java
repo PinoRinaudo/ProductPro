@@ -1,6 +1,7 @@
-package com.pro.productpro.model;
+package com.pro.productpro.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pro.productpro.model.OrderProduct;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

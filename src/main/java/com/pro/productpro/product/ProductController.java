@@ -1,7 +1,5 @@
-package com.pro.productpro.controller;
+package com.pro.productpro.product;
 
-import com.pro.productpro.model.Product;
-import com.pro.productpro.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
